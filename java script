@@ -1,0 +1,27 @@
+function calculateBMI() {
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
+  const resultDiv = document.getElementById('result');
+
+  if (!weight || !height || weight <= 0 || height <= 0) {
+    resultDiv.innerHTML = "Please enter valid weight and height.";
+    resultDiv.style.color = "red";
+    return;
+  }
+
+  const bmi = weight / (height * height);
+  let category = '';
+
+  if (bmi < 18.5) {
+    category = "Underweight";
+  } else if (bmi < 24.9) {
+    category = "Normal weight";
+  } else if (bmi < 29.9) {
+    category = "Overweight";
+  } else {
+    category = "Obesity";
+  }
+
+  resultDiv.innerHTML = `Your BMI is <strong>${bmi.toFixed(2)}</strong><br>Category: <strong>${category}</strong>`;
+  resultDiv.style.color = "#333";
+}
